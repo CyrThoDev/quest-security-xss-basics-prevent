@@ -43,13 +43,19 @@
 
         const input = document.getElementById("token-question");
         const log = document.getElementById("token-answer");
-
+       
         input.addEventListener("input", updateValue);
 
         function updateValue(e) {
-            log.innerHTML = e.target.value;
+        const encodedValue=e.target.value
+            .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        log.innerHTML= encodedValue; 
         }
-
+  
     </script>
 
 </body>
